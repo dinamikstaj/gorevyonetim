@@ -1,0 +1,711 @@
+/* frontend/app/globals.css içinde ilgili bölüme ekleyin/güncelleyin */
+
+/* --- Dış Kaynakların İthalatı --- */
+/* Bu kısım genellikle globals.css'in en başında olur */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+/* --- CSS Custom Properties (Tasarım Sistemi) --- */
+/* Bu kısım genellikle globals.css'in en başında olur */
+:root {
+  /* Color Palette - Yumuşak, Pastel Açık Tema */
+  --primary-bg: #F9F9FB;
+  --secondary-bg: #FFFFFF;
+  
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --modal-bg: rgba(255, 255, 255, 0.95);
+  --overlay-bg: rgba(0, 0, 0, 0.4);
+  
+  --input-bg: #F1F3F5;
+  --input-bg-focus: #E8ECEF;
+  --input-bg-disabled: #E0E2E5; /* Yeni disabled input arkaplan rengi */
+  --text-primary: #212121;
+  --text-secondary: #5a5a5a;
+  --text-muted: #888888;
+  --text-primary-inverted: #FFFFFF; /* Başarı durumu için invert metin rengi */
+
+  --border-color: #e0e0e0;
+  --border-subtle: #d0d0d0; /* Daha ince kenarlıklar için */
+  --focus-ring-color: rgba(66, 153, 225, 0.5); /* Mavi odaklama halkası */
+
+  /* Aksan Renkleri (Mavi/Mor Tonları) */
+  --accent-primary: #667EEA; /* Derin lavanta mavisi */
+  --accent-secondary: #7F7FD6; /* Hafif morumsu mavi */
+  --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  
+  /* Durum Renkleri */
+  --success-color: #34c759; /* Yeşil */
+  --success-color-light: #d4f7dc; /* Daha açık yeşil (başarı arkaplanı) */
+  --success-color-dark: #28a745; /* Daha koyu yeşil */
+  --error-color: #ff3b30; /* Kırmızı */
+  --warning-color: #ffcc00; /* Sarı */
+  --info-color: #007aff; /* Mavi */
+
+  /* Gölgeler (shadcn/ui'dan esinlenilmiştir) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.2);
+  --shadow-3xl: 0 35px 60px rgba(0, 0, 0, 0.3); /* Daha derin bir gölge */
+  --shadow-deep: 0 15px 30px rgba(0, 0, 0, 0.25); /* Genel kart gölgesi */
+  --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-light-glow: rgba(102, 126, 234, 0.4); /* Aksan rengiyle parlayan gölge */
+  --shadow-btn-hover: rgba(127, 127, 214, 0.5); /* Buton hover gölgesi */
+  --shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.06); /* Inputlar için iç gölge */
+  --shadow-inset-light: inset 0 1px 3px rgba(0, 0, 0, 0.08); /* Hafif iç gölge */
+
+  /* Radii (Yuvarlaklıklar) */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-full: 9999px;
+
+  /* Spacing (Boşluklar) */
+  --space-0-5: 0.125rem; /* 2px */
+  --space-1: 0.25rem; /* 4px */
+  --space-1-5: 0.375rem; /* 6px */
+  --space-2: 0.5rem; /* 8px */
+  --space-2-5: 0.625rem; /* 10px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+}
+
+/* --- Temel HTML ve Body Stilleri --- */
+html, body {
+  @apply h-full antialiased;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg); /* Varsayılan arka plan */
+  color: var(--text-primary); /* Varsayılan metin rengi */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Tüm elementler için */
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+}
+
+/* --- Tailwind CSS Temel Katmanlar --- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Genel Utility Sınıfları --- */
+
+/* Text Inputlar */
+.text-input,
+.textarea-input,
+.select-input {
+  @apply block w-full px-4 py-2 text-base rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.textarea-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.text-input:disabled,
+.textarea-input:disabled,
+.select-input:disabled {
+  @apply opacity-60 cursor-not-allowed;
+  background-color: var(--input-bg-disabled);
+}
+
+/* Butonlar - Temel */
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+/* Butonlar - Birincil (Primary) */
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Butonlar - İkincil (Secondary) */
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400;
+  background-color: var(--input-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* Butonlar - Tehlike (Danger) */
+.btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  background-color: var(--error-color);
+  box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
+}
+
+/* İkon Stilleri */
+.icon {
+  @apply inline-block align-middle mr-1; /* İkonların metinle hizalanmasını sağlar */
+  color: inherit; /* İkon rengini ebeveyninden alır */
+}
+
+
+/* --- Uygulama Geneli Yapı Stilleri --- */
+
+.app-container {
+    @apply flex flex-col min-h-screen;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+/* Header */
+.app-header {
+    @apply flex justify-between items-center px-4 py-3 md:px-6 md:py-4 border-b border-gray-200 shadow-sm;
+    background-color: var(--header-bg);
+    border-color: var(--border-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.header-left {
+    @apply flex items-center gap-2;
+}
+
+.header-icon {
+    @apply w-6 h-6 text-accent-primary; /* İkon boyutu ve rengi */
+    color: var(--accent-primary);
+}
+
+.header-title {
+    @apply text-lg md:text-xl font-bold;
+    color: var(--text-primary);
+}
+
+.header-actions {
+    @apply flex items-center gap-3 md:gap-4;
+}
+
+.user-info {
+    @apply hidden md:flex items-center gap-2 text-sm font-medium;
+    color: var(--text-secondary);
+}
+
+.user-avatar {
+    @apply w-8 h-8 rounded-full bg-accent-secondary flex items-center justify-center text-white font-semibold text-sm;
+    background-color: var(--accent-secondary);
+}
+
+.manage-button, .logout-button, .toggle-sidebar-btn {
+    @apply btn btn-secondary px-3 py-1.5 text-sm md:px-4 md:py-2;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--text-secondary);
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.manage-button:hover, .logout-button:hover, .toggle-sidebar-btn:hover {
+    background-color: var(--input-bg-focus);
+    box-shadow: var(--shadow-md);
+}
+
+/* Main Content Wrapper */
+.main-content-wrapper {
+    @apply flex flex-1 overflow-hidden;
+}
+
+/* Left Panel (Sidebar) */
+.left-panel {
+    @apply fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 shadow-lg p-6 flex flex-col transition-transform duration-300 ease-in-out z-30;
+    background-color: var(--secondary-bg);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-lg);
+    border-right: 1px solid var(--border-color); /* Sağda ince kenarlık */
+}
+
+.left-panel.closed {
+    @apply transform -translate-x-full;
+}
+
+.sidebar-overlay {
+    @apply fixed inset-0 bg-overlay z-20 md:hidden; /* Sadece mobil'de overlay */
+    background-color: var(--overlay-bg);
+}
+
+@screen md {
+    .left-panel {
+        @apply relative transform-none; /* Masaüstünde sabit kalır */
+        width: 280px; /* Masaüstünde sabit genişlik */
+    }
+    .sidebar-overlay {
+        @apply hidden; /* Masaüstünde overlay yok */
+    }
+}
+
+.form-section {
+    @apply flex flex-col gap-4;
+}
+
+.form-header {
+    @apply flex items-center gap-2 text-lg font-semibold mb-4 pb-2 border-b border-gray-200;
+    color: var(--accent-primary);
+    border-color: var(--border-color);
+}
+
+.input-group {
+    @apply flex flex-col mb-3;
+}
+
+.input-label {
+    @apply text-sm font-medium text-gray-700 mb-1;
+    color: var(--text-secondary);
+}
+
+.add-task-button {
+    @apply btn btn-primary mt-4;
+    border-radius: var(--radius-lg);
+    font-size: 1.0rem;
+    padding: var(--space-3) var(--space-6);
+}
+
+/* Right Panel (Task List) */
+.right-panel {
+    @apply flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto;
+    transition: margin-left 0.3s ease-in-out;
+    background-color: var(--primary-bg);
+}
+
+.right-panel.sidebar-open {
+    @apply md:ml-64; /* Sidebar açıkken boşluk bırak */
+}
+
+.right-panel.sidebar-closed {
+    @apply md:ml-0; /* Sidebar kapalıyken boşluk sıfır */
+}
+
+@screen md {
+    .right-panel.sidebar-open {
+        margin-left: 280px; /* Masaüstünde sidebar genişliği kadar boşluk */
+    }
+}
+
+.panel-header {
+    @apply flex flex-col sm:flex-row justify-between items-center mb-6 gap-4;
+}
+
+.search-bar {
+    @apply relative w-full sm:w-auto flex-1 max-w-md;
+}
+
+.search-input {
+    @apply text-input pl-10 pr-4;
+}
+
+.search-icon {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 text-gray-400;
+}
+
+.filter-buttons {
+    @apply flex flex-wrap gap-2 mb-6;
+}
+
+.filter-btn {
+    @apply btn btn-secondary px-4 py-2 text-sm;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+}
+
+.filter-btn.active {
+    @apply bg-accent-primary text-white;
+    background-color: var(--accent-primary);
+    box-shadow: var(--shadow-sm);
+    color: var(--text-primary-inverted);
+}
+
+.empty-state {
+    @apply text-center text-gray-500 py-10 text-lg;
+    color: var(--text-muted);
+}
+
+.task-list {
+    @apply grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+}
+
+.task-list-item {
+    @apply flex flex-col bg-white rounded-lg p-4 shadow-md border border-gray-200 relative;
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.task-list-item:hover {
+    @apply transform -translate-y-1 shadow-lg;
+    box-shadow: var(--shadow-md);
+}
+
+.task-list-item.completed-task {
+    @apply opacity-70 border-green-400;
+    background-color: var(--success-color-light);
+    border-color: var(--success-color);
+}
+
+.task-checkbox {
+    @apply absolute top-4 right-4 w-5 h-5;
+    z-index: 10;
+}
+
+.task-title {
+    @apply text-lg font-semibold mb-2;
+    color: var(--text-primary);
+}
+
+.status-badge {
+    @apply text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2;
+}
+
+.task-type-badge {
+    @apply flex items-center gap-1 text-sm text-gray-600 mb-2;
+    color: var(--text-secondary);
+}
+
+.task-assigned-to, .task-date-info {
+    @apply flex items-center gap-1 text-sm text-gray-500 mb-1;
+    color: var(--text-muted);
+}
+
+.view-task-button {
+    @apply btn btn-primary px-3 py-1 text-xs;
+    border-radius: var(--radius-md);
+}
+
+/* Modallar */
+.modal-overlay {
+    @apply fixed inset-0 flex items-center justify-center bg-overlay z-40;
+    background-color: var(--overlay-bg);
+}
+
+.modal-container {
+    @apply bg-white rounded-lg shadow-xl w-11/12 md:w-2/3 lg:w-1/2 max-w-2xl max-h-[90vh] flex flex-col;
+    background-color: var(--modal-bg);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* Scrollbar'ı modal içinde tutar */
+}
+
+.modal-header {
+    @apply flex justify-between items-center p-4 md:p-5 border-b border-gray-200;
+    background-color: var(--header-bg);
+    border-color: var(--border-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-title {
+    @apply text-lg md:text-xl font-bold;
+    color: var(--text-primary);
+}
+
+.modal-close-button {
+    @apply text-gray-500 hover:text-gray-700 p-2 rounded-full transition-colors duration-200;
+}
+
+.modal-body {
+    @apply p-4 md:p-5 overflow-y-auto flex-1; /* İçeriğin kaydırılabilir olması için */
+}
+
+.modal-actions-footer {
+    @apply flex justify-end gap-3 p-4 md:p-5 border-t border-gray-200;
+    background-color: var(--header-bg);
+    border-color: var(--border-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.confirmation-buttons .btn-danger {
+    @apply bg-red-500 hover:bg-red-600;
+}
+
+/* Troubleshooting Notes Styles */
+.troubleshooting-notes-section {
+    @apply mt-6 border-t border-gray-200 pt-6;
+    border-color: var(--border-color);
+}
+
+.troubleshooting-notes-section h3 {
+    @apply text-lg font-semibold mb-4;
+    color: var(--text-primary);
+}
+
+.notes-list {
+    @apply space-y-4 mb-6;
+}
+
+.note-item {
+    @apply bg-gray-100 p-4 rounded-lg border border-gray-200 shadow-sm relative;
+    background-color: var(--input-bg);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.note-item-header {
+    @apply flex justify-between items-center mb-2;
+}
+
+.note-type-badge {
+    @apply text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1;
+}
+
+.note-type-badge.Bug { background-color: #ffe6e6; color: #cc0000; } /* Kırmızımsı */
+.note-type-badge.Solution { background-color: #e6ffe6; color: #009900; } /* Yeşilimsi */
+.note-type-badge.Review { background-color: #e6f7ff; color: #0073e6; } /* Mavimsi */
+.note-type-badge.Other { background-color: #f5f5f5; color: #555555; } /* Gri */
+
+.note-author-date {
+    @apply text-xs text-gray-500;
+    color: var(--text-muted);
+}
+
+.note-content {
+    @apply text-sm text-gray-700 mb-2;
+    color: var(--text-primary);
+}
+
+.add-note-form {
+    @apply flex flex-col gap-3 mt-4;
+}
+
+.add-note-form textarea {
+    @apply textarea-input;
+}
+
+.add-note-form select {
+    @apply select-input;
+}
+
+.note-buttons {
+    @apply flex justify-end gap-2;
+}
+
+.btn-add-note {
+    @apply btn btn-primary px-4 py-2 text-sm;
+    border-radius: var(--radius-md);
+}
+
+.btn-cancel-note {
+    @apply btn btn-secondary px-4 py-2 text-sm;
+    border-radius: var(--radius-md);
+}
+
+.edit-delete-buttons {
+    @apply absolute top-2 right-2 flex gap-1;
+}
+
+.edit-note-btn, .delete-note-btn {
+    @apply p-1 rounded-full text-gray-500 hover:text-gray-700 transition-colors duration-200;
+}
+
+.delete-note-btn {
+    @apply hover:text-red-500;
+}
+
+/* --- Login Sayfası Kapsayıcı --- */
+.login-page-container {
+  /* Tam ekran yüksekliği, dikeyde ve yatayda ortalama, hafif dolgu */
+  @apply min-h-screen flex items-center justify-center p-4;
+  /* Arka plan: Mevcut değişkenlerden veya koyu moda uygun degrade */
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+  transition: background-color 0.3s ease; /* Tema değişimi için yumuşak geçiş */
+}
+
+/* --- Yükleme Katmanı --- */
+.loading-overlay {
+  @apply fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50;
+}
+
+.spinner {
+  @apply text-white w-10 h-10; /* Varsayılan spinner boyutu */
+}
+
+/* --- İçerik Kapsayıcısı (Sol ve Sağ Panelleri İçerir) --- */
+.login-content-wrapper {
+  @apply flex flex-col md:flex-row bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-4xl;
+  background-color: var(--secondary-bg); /* Mevcut secondary-bg değişkenini kullan */
+  box-shadow: var(--shadow-deep);
+}
+
+/* --- Sol Panel (Hoş Geldiniz Metni) --- */
+.login-left-panel {
+  @apply flex flex-col justify-center items-center p-8 text-center text-white md:w-1/2;
+  background: linear-gradient(45deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl); /* Sadece sol tarafta yuvarlak köşeler */
+}
+
+.main-heading {
+  @apply text-4xl font-extrabold mb-4;
+  color: var(--text-primary-inverted); /* Daha uygun renk */
+}
+
+.welcome-text {
+  @apply text-xl mb-2;
+  color: var(--text-primary-inverted);
+}
+
+.sub-text {
+  @apply text-base opacity-90;
+  color: var(--text-primary-inverted);
+}
+
+/* --- Sağ Panel (Giriş Formu) --- */
+.login-right-panel {
+  @apply p-8 md:p-12 md:w-1/2 flex flex-col justify-center;
+  background-color: var(--card-bg); /* Kart arkaplan rengi, şeffaflık ile derinlik hissi */
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0; /* Sağ tarafta yuvarlak köşeler */
+}
+
+.login-form {
+  @apply flex flex-col gap-6;
+}
+
+.form-input-group {
+  @apply flex flex-col;
+}
+
+.form-label {
+  @apply text-sm font-semibold mb-2;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  @apply text-input; /* Global text-input stilini kullanır */
+}
+.form-input:disabled {
+    @apply opacity-60 cursor-not-allowed;
+}
+
+/* Mesajlar (Hata/Başarı) */
+.login-message {
+  @apply p-3 rounded-lg text-sm text-center font-medium;
+  border-radius: var(--radius-md);
+}
+
+.login-message.error {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.login-message.success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+/* Butonları saran kapsayıcı */
+.login-buttons-container {
+  @apply flex flex-col gap-4 mt-6; /* Dikeyde 4 birim boşluk, üstten 6 birim boşluk */
+  /* İsteğe bağlı olarak mobil ve masaüstü için farklı düzenler tanımlanabilir */
+  @screen sm {
+    @apply flex-row justify-between; /* Küçük ekranlarda yan yana */
+  }
+  margin-top: 20px;
+}
+
+/* Giriş butonu (varsayılan stil) */
+.login-button {
+  @apply w-full py-3 px-6 rounded-lg font-bold text-white transition-all duration-300 flex items-center justify-center gap-2;
+  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  box-shadow: 0 6px 15px var(--shadow-light-glow); 
+  border-radius: var(--radius-lg);
+  font-size: 1.0rem;
+  margin-top: 20px;
+}
+
+.login-button:hover:not(:disabled) {
+  @apply transform scale-105; 
+  box-shadow: 0 8px 20px var(--shadow-btn-hover); 
+}
+
+.login-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+  box-shadow: none; 
+  background-color: var(--input-bg); 
+  color: var(--text-muted); 
+}
+
+/* Kullanıcı Girişi için ikincil buton stili (isteğe bağlı, daha hafif bir görünüm için) */
+.secondary-login-button {
+  background: var(--secondary-bg); /* Mevcut secondary-bg değişkenini kullan */
+  border: 1px solid var(--border-color); /* Mevcut border-color değişkenini kullan */
+  box-shadow: none; /* İkincil butonda gölgeyi kaldır */
+  color: var(--text-primary); /* Mevcut text-primary değişkenini kullan */
+  margin-top: 20px;
+}
+
+.secondary-login-button:hover:not(:disabled) {
+  background: var(--input-bg-focus); /* Hover'da hafif odak arka planı */
+  box-shadow: none; 
+  transform: scale(1.02); /* Hafif büyütme */
+  color: var(--accent-primary); /* Hover'da aksan rengi */
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 767px) {
+    .login-content-wrapper {
+        border-radius: var(--radius-lg); /* Mobil'de tüm kutu yuvarlak */
+    }
+    .login-left-panel {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0; /* Üst köşeler yuvarlak */
+        padding: var(--space-6) var(--space-4); /* Dikeyde daha fazla boşluk */
+    }
+    .login-right-panel {
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg); /* Alt köşeler yuvarlak */
+        padding: var(--space-6) var(--space-4); /* Dikeyde daha fazla boşluk */
+    }
+    .main-heading {
+        font-size: 2.5rem; /* Mobil için biraz daha küçük başlık */
+    }
+    .welcome-text {
+        font-size: 1.2rem;
+    }
+    .sub-text {
+        font-size: 0.9rem;
+    }
+    .login-buttons-container {
+      @apply flex-col; /* Mobil'de alt alta */
+    }
+}
+
+@media (min-width: 768px) {
+    .login-left-panel {
+        border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+    }
+    .login-right-panel {
+        border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    }
+    .login-buttons-container {
+        @apply flex-row; /* Masaüstünde yan yana */
+    }
+}
